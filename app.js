@@ -1,4 +1,9 @@
 function gameStart() {
+    //Comenzamos a contar los segundos
+    startTime();
+}
+
+function startTime() {
     let seconds = 0;
     let time = document.getElementById("time");
     window.setInterval(function () {
@@ -7,3 +12,8 @@ function gameStart() {
     }, 1000);
 }
 
+function flipCard() {
+    let aux = 1;
+    let moves = document.getElementsByClassName("moves");
+    moves.innerHTML = aux;
+}
