@@ -22,7 +22,7 @@ const sets = {
 const creatBoard = () => {
 
     //Elementos de las cartas
-    let icons = ['🍌', '🍉', '🍍', '🥕', '🍇', '🍒', '🍎', '🥑']
+    let icons = ['🍌', '🍉', '🍍', '🥕', '🍇', '🍒', '🍌', '🍉', '🍍', '🥕', '🍇', '🍒']
 
     //Mezclamos con un random para que no se repita su posición
     let items = mix(icons)
