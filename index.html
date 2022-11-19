@@ -14,27 +14,50 @@
 
 <body>
 
-    <h1>Memory Game</h1>
+    <h1 class="title">Memory Game</h1>
 
-    <div class="game">
+    <div class="board-game">
 
         <div class="cards-container">
 
-            <div class="cards" onclick="flipCard()">🍇</div>
-            <div class="cards" onclick="flipCard()">🍉</div>
-            <div class="cards" onclick="flipCard()">🍌</div>
-            <div class="cards" onclick="flipCard()">🍋</div>
-            <div class="cards" onclick="flipCard()">🍊</div>
-            <div class="cards" onclick="flipCard()">🍐</div>
-            <div class="cards" onclick="flipCard()">🍎</div>
-            <div class="cards" onclick="flipCard()">🍏</div>
-
+            <div class="card">
+                <div class="card-front"></div>
+                <div class="card-back">🍉</div>
+            </div>
+            <div class="card">
+                <div class="card-front"></div>
+                <div class="card-back">🍌</div>
+            </div>
+            <div class="card">
+                <div class="card-front"></div>
+                <div class="card-back">🍇</div>
+            </div>
+            <div class="card">
+                <div class="card-front"></div>
+                <div class="card-back">🍏</div>
+            </div>
+            <div class="card">
+                <div class="card-front"></div>
+                <div class="card-back">🍎</div>
+            </div>
+            <div class="card">
+                <div class="card-front"></div>
+                <div class="card-back">🍐</div>
+            </div>
+            <div class="card">
+                <div class="card-front"></div>
+                <div class="card-back">🍊</div>
+            </div>
+            <div class="card">
+                <div class="card-front"></div>
+                <div class="card-back">🍋</div>
+            </div>
         </div>
 
         <div class="setup">
-            <span>Time:<span id="time"></span></span>
+            <span>Time:<span id="time">0</span></span>
             <button class="btn" onclick="gameStart()">Start</button>
-            <span>Moves:<span id="moves"></span></span>
+            <span>Moves:<span id="moves">0</span></span>
         </div>
 
     </div>
