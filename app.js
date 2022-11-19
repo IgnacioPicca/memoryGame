@@ -1,26 +1,61 @@
+//Capturamos los elementos que vamos a utilizar
+
 const elements = {
     moves: document.querySelector('#moves'),
-    timer: document.querySelector('#time'),
+    time: document.querySelector('#time'),
     start: document.querySelector('btn'),
-
+    // win: document.querySelector('.win')
 }
+
+//Definimos las variables que modelan el juego
 
 const sets = {
     gameStarted: false,
     flippedCards: 0,
     totalFlips: 0,
     time: 0,
+    // loop: null
+}
 
+//Creamos el tablero de juego
+
+const creatBoard = () => {
+
+    //Elementos de las cartas
+    let icons = ['🍌', '🍉', '🍍', '🥕', '🍇', '🍒', '🍎', '🥑']
+
+    //Mezclamos con un random para que no se repita su posición
+    let items = mix(icons)
+
+    //Insertamos las cartas en el html.
+    //Capturamos el tablero
+    let boardGame = document.getElementById("board-game");
+    //Creamos las cartas y el contenido a insertar
+    let cards = `
+            <div class="cards-container">
+                ${items.map(item => `
+                    <div class="card">
+                        <div class="card-front"></div>
+                        <div class="card-back">${item}</div>
+                    </div>
+                `).join("")}
+            </div>
+            <div class="setup">
+                <span>Time:<span id="time">0</span></span>
+                <button class="btn" onclick="startTime()">Start</button>
+                <span>Moves:<span id="moves">0</span></span>
+        </div>
+         `
+    //Insertamos las cartas en el tablero
+    boardGame.innerHTML += cards;
 }
 
 
-
-
-
-function gameStart() {
-    //Comenzamos a contar los segundos
-    startTime();
+//Recibe el array de iconos y los retorna mezclados
+function mix(icons) {
+    return icons.sort(() => Math.random() - 0.5);
 }
+
 
 function startTime() {
     let seconds = 1;
@@ -31,23 +66,7 @@ function startTime() {
     }, 1000);
 }
 
-function countMoves() {
 
-    let card = document.getElementsByClassName("cards");
-    let moves = document.getElementById("moves");
-    let contador = 0;
-
-    card.onclick = function () {
-        contador++;
-        moves.textContent = contador;
-    }
-
-}
-
-let card = document.getElementsByClassName("cards");
-card.onclick = function () {
-    console.log("hola")
-}
-
+creatBoard();
 
 
