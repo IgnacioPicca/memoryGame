@@ -1,24 +1,18 @@
 //Capturamos los elementos que vamos a utilizar
-
 const elements = {
     moves: document.querySelector('#moves'),
     time: document.querySelector('#time'),
     start: document.querySelector('btn'),
-    // win: document.querySelector('.win')
 }
 
 //Definimos las variables que modelan el juego
-
 const sets = {
     gameStarted: false,
-    flippedCards: 0,
-    totalFlips: 0,
+    points: 0,
     time: 0,
-    // loop: null
 }
 
 //Creamos el tablero de juego
-
 const creatBoard = () => {
 
     //Elementos de las cartas
@@ -36,7 +30,7 @@ const creatBoard = () => {
                 ${items.map(item => `
                     <div class="card">
                         <div class="card-front"></div>
-                        <div class="card-back">${item}</div>
+                        <div class="card-back" onclick="flip()">${item}</div>
                     </div>
                 `).join("")}
             </div>
@@ -50,13 +44,20 @@ const creatBoard = () => {
     boardGame.innerHTML += cards;
 }
 
-
 //Recibe el array de iconos y los retorna mezclados
 function mix(icons) {
     return icons.sort(() => Math.random() - 0.5);
 }
 
 
+
+function flip() {
+    console.log("Tocaste una carta")
+}
+
+
+
+//Cuando se inicia el juego, comienza a correr el tiempo
 function startTime() {
     let seconds = 1;
     let time = document.getElementById("time");
@@ -65,7 +66,6 @@ function startTime() {
         seconds++;
     }, 1000);
 }
-
 
 creatBoard();
 
