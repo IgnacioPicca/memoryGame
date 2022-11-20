@@ -1,5 +1,7 @@
+
+
+
 //Definimos las variables que modelan el juego
-let gameStarted = false;
 let points = 0;
 let time = 0;
 let flippedCards = 0;
@@ -24,12 +26,10 @@ let items = mix(icons);
 //Acá corre el juego
 function flip(id) {
 
-    //Si el juego no esta iniciado, lo comenzamos
-    if (!gameStarted) {
-        startGame();
-    }
+    //Iniciamos el juego
+    startGame();
 
-    //Incrementamos la bandera
+    //Incrementamos las cartas mostradas
     flippedCards += 1;
 
     //Selección de la primera carta
@@ -56,55 +56,18 @@ function flip(id) {
         attempts++;
         //Actualizamos los movimientos
         moves.innerHTML = attempts
-
-        //Si el valor de las dos cartas elegidas coincide
-        if (card1Value == card2Value) {
-            //Reestablecemos flippedCards
-            flippedCards = 0;
-            //Incrementamos points
-            points += 1;
-            //Inhabilitamos su selección 
-            card2.classList.add('unavailable')
-        }
-
-        else {
-            //Despues de un segundo
-            setTimeout(() => {
-                //Reestablecemos flippedCards
-                flippedCards = 0;
-                //Ocultamos el contenido de las tarjetas
-                card1.innerHTML = " ";
-                card2.innerHTML = " ";
-                //Volvemos a habilitar la tarjeta
-                card1.classList.remove('unavailable')
-            }, 600)
-        }
+        //Chequeamos una coincidencia
+        checkMatch(card1Value, card2Value);
     }
 
-    if (points == 8) {
-        setTimeout(() => {
-            end.innerHTML =
-                `
-            <div class="win">
-               <span class="win-text">Nice game!</span>
-               <p class="win-text">You made <span class="win-text">${attempts}</span> moves</p>
-               <p class="win-text">in <span class="win-text">${time}</span> seconds</p>
-            </div>
-        `
-            clearInterval(time)
-        }, 1000)
+    if (points == 1) {
+        youWin();
     }
 }
 
 
-
 //Cuando se inicia el juego, comienza a correr el tiempo
 const startGame = () => {
-    //Cambiamos la bandera
-    if (!gameStarted) {
-        gameStarted = true;
-    }
-
     let seconds = 1;
     let time = document.getElementById("time");
     window.setInterval(function () {
@@ -119,6 +82,34 @@ function mix(icons) {
     return icons.sort(() => Math.random() - 0.5);
 }
 
+function checkMatch(card1Value, card2Value) {
+    //Si el valor de las dos cartas elegidas coincide
+    card1Value == card2Value ? (
+        //Reestablecemos flippedCards
+        flippedCards = 0,
+        //Incrementamos points
+        points += 1,
+        //Inhabilitamos su selección 
+        card2.classList.add('unavailable')) :
 
+        //Despues de un segundo
+        setTimeout(() => {
+            //Reestablecemos flippedCards
+            flippedCards = 0;
+            //Ocultamos el contenido de las tarjetas
+            card1.innerHTML = "";
+            card2.innerHTML = "";
+            //Volvemos a habilitar la tarjeta
+            card1.classList.remove('unavailable')
+        }, 600)
+}
 
+function youWin() {
+    Swal.fire({
+        title: 'Error!',
+        text: 'Do you want to continue',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+    })
+}
 
