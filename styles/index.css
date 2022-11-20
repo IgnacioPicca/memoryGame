@@ -26,7 +26,7 @@ a {
 }
 
 .container {
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 .level-container {
@@ -68,6 +68,10 @@ a {
     box-shadow: 0 0 40px 40px #e74c3c inset;
 }
 
+#extreme:focus {
+    box-shadow: 0 0 40px 40px #e74c3c inset;
+}
+
 #newbie {
     border: 2px solid #55ff00;
     border-radius: 0.6em;
@@ -76,6 +80,10 @@ a {
 }
 
 #newbie:hover {
+    box-shadow: 0 0 40px 40px #40ff00 inset;
+}
+
+#newbie:focus {
     box-shadow: 0 0 40px 40px #40ff00 inset;
 }
 
@@ -101,7 +109,7 @@ a {
     background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
     border: none;
     border-radius: 1000px;
-    box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+    box-shadow: 5px 20px 50px rgb(7, 0, 0);
     transition: all 0.3s ease-in-out 0s;
     cursor: pointer;
     outline: none;
@@ -171,7 +179,7 @@ a {
 } */
 
 
-footer {
+.autor-container {
     align-items: center;
     min-height: 80px;
     padding: 1em;

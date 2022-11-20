@@ -114,3 +114,29 @@ body {
     font-size: 30px;
     color: rgba(34, 193, 195, 1);
 }
+
+footer {
+    align-items: center;
+    min-height: 80px;
+    padding: 1em;
+    color: white;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.autor {
+    font-size: 16px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-family: 'Sono', sans-serif;
+
+}
+
+.github {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(60deg, #7affd3, #00ffd5);
+    background-clip: text;
+    color: transparent;
+}

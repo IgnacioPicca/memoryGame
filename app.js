@@ -1,7 +1,7 @@
 //Definimos las variables que modelan el juego
 let statedGame = false;
 let match = 0;
-let time = 50;
+let time = 35;
 let flippedCards = 0;
 let attempts = 0;
 let card1;
