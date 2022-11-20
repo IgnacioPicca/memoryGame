@@ -1,7 +1,5 @@
-
-
-
 //Definimos las variables que modelan el juego
+let statedGame = false;
 let points = 0;
 let time = 0;
 let flippedCards = 0;
@@ -27,7 +25,9 @@ let items = mix(icons);
 function flip(id) {
 
     //Iniciamos el juego
-    startGame();
+    if (!statedGame) {
+        startGame();
+    }
 
     //Incrementamos las cartas mostradas
     flippedCards += 1;
@@ -60,6 +60,7 @@ function flip(id) {
         checkMatch(card1Value, card2Value);
     }
 
+    //Si se hacen 8 puntos, se gana
     if (points == 1) {
         youWin();
     }
@@ -68,6 +69,7 @@ function flip(id) {
 
 //Cuando se inicia el juego, comienza a correr el tiempo
 const startGame = () => {
+    statedGame = true;
     let seconds = 1;
     let time = document.getElementById("time");
     window.setInterval(function () {
@@ -106,10 +108,13 @@ function checkMatch(card1Value, card2Value) {
 
 function youWin() {
     Swal.fire({
-        title: 'Error!',
-        text: 'Do you want to continue',
-        icon: 'error',
-        confirmButtonText: 'Cool'
+        title: 'You won!',
+        html: ` With ${attempts} moves
+        `,
+        width: 600,
+        padding: '3em',
+        color: '#716add',
+        background: '#fff url(/images/trees.png)',
     })
 }
 
