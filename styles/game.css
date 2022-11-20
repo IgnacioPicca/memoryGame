@@ -59,6 +59,10 @@ body {
     padding: 5px;
 }
 
+.card:hover {
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
 .setup {
     width: 90%;
     max-width: 500px;

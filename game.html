@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sono:wght@500&display=swap" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="shortcut icon" href="./img/icon.ico" type="image/png" />
+    <link rel="stylesheet" href="./styles/game.css">
+
+    <title>Memory Game</title>
+</head>
+
+<body>
+
+    <h1 class="title">Memory Game</h1>
+
+    <div id="board-game">
+
+        <div class="cards-container">
+            <div class="card" id="0" onclick="flip(0)"></div>
+            <div class="card" id="1" onclick="flip(1)"></div>
+            <div class="card" id="2" onclick="flip(2)"></div>
+            <div class="card" id="3" onclick="flip(3)"></div>
+            <div class="card" id="4" onclick="flip(4)"></div>
+            <div class="card" id="5" onclick="flip(5)"></div>
+            <div class="card" id="6" onclick="flip(6)"></div>
+            <div class="card" id="7" onclick="flip(7)"></div>
+            <div class="card" id="8" onclick="flip(8)"></div>
+            <div class="card" id="9" onclick="flip(9)"></div>
+            <div class="card" id="10" onclick="flip(10)"></div>
+            <div class="card" id="11" onclick="flip(11)"></div>
+            <div class="card" id="12" onclick="flip(12)"></div>
+            <div class="card" id="13" onclick="flip(13)"></div>
+            <div class="card" id="14" onclick="flip(14)"></div>
+            <div class="card" id="15" onclick="flip(15)"></div>
+        </div>
+
+        <div class="setup">
+            <span>Time:<span id="time"></span></span>
+
+            <span>Moves:<span id="moves"></span></span>
+        </div>
+
+        <div id="endGame"></div>
+
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
