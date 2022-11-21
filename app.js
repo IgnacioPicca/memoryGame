@@ -1,7 +1,7 @@
 //Definimos las variables que modelan el juego
 let statedGame = false;
 let match = 0;
-let time = 31;
+let time = 10;
 let flippedCards = 0;
 let attempts = 0;
 let card1;
@@ -10,6 +10,7 @@ let card2;
 let card2Value;
 let countTime = null;
 let points = 100;
+//Sonidos
 let firstCardAudio = new Audio("./sounds/firstCard.wav")
 let matchAudio = new Audio("./sounds/match.wav")
 let noMatch = new Audio("./sounds/noMatch.wav")
@@ -122,6 +123,7 @@ function checkMatch(card1Value, card2Value) {
         }, 650)
 }
 
+//TODO.- IMPLEMENTAR TABLA DE SCORES
 function saveScore() {
     Swal.fire({
         title: 'Submit your amazing name',
@@ -166,7 +168,7 @@ function youWin() {
     //Mostramos resumen de victoria
     Swal.fire({
         title: 'You won! </br>',
-        html: `With ${attempts} moves & ${points - attempts} points </br></br> Do you want to save your score?`,
+        html: `With ${attempts} moves & ${points - attempts + time} points </br></br> Do you want to save your score?`,
         width: 600,
         padding: '3em',
         color: 'rgba(34, 193, 195, 1)',
