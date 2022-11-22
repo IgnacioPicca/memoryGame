@@ -1,7 +1,7 @@
 //Definimos las variables que modelan el juego
 let statedGame = false;
 let match = 0;
-let time = 10;
+let time = 30;
 let flippedCards = 0;
 let attempts = 0;
 let card1;
@@ -95,7 +95,7 @@ function flip(id) {
     }
 
     //Si se hacen 8 puntos, se gana
-    if (match == 8) {
+    if (match == 1) {
         youWin();
     }
 }
