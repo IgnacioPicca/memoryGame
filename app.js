@@ -53,8 +53,6 @@ function updateTime(level) {
     else {
         time = 35;
     }
-    console.log(time)
-    return time;
 }
 
 //Cuando se inicia el juego, comienza a correr el tiempo
@@ -71,7 +69,6 @@ const startGame = () => {
         }
     }, 1000)
 }
-
 
 //VER NIVELES
 //Acá corre el juego
