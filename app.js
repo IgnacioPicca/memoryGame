@@ -1,7 +1,7 @@
 //Definimos las variables que modelan el juego
 let statedGame = false;
 let match = 0;
-let time = null;
+let time;
 let level = null;
 let flippedCards = 0;
 let attempts = 0;
@@ -38,16 +38,23 @@ function mix(icons) {
     return icons.sort(() => Math.random() - 0.5);
 }
 
-
 //VER NIVELES
-
+//AL HACER FLIP SE VACIA EL VALOR
 function setLevel(lvl) {
     level = document.getElementById(lvl).id;
+    updateTime(level);
 }
 
 function updateTime(level) {
     console.log(level)
-    level == "extreme" ? time = 26 : time = 35
+    if (level === "extreme") {
+        time = 26;
+    }
+    else {
+        time = 35;
+    }
+    console.log(time)
+    return time;
 }
 
 //Cuando se inicia el juego, comienza a correr el tiempo
@@ -73,6 +80,7 @@ function flip(id) {
     //Iniciamos el juego
     if (!statedGame) {
         updateTime();
+        console.log(time)
         startGame();
         statedGame = true;
     }
