@@ -29,24 +29,13 @@ let cards = document.getElementsByClassName("card")
 
 
 
-// Create event listener
+//Evento click en cartas
 document.addEventListener('click', (e) => {
     // Retrieve id from clicked element
     let elementId = e.target.id;
     // If element has id
     if (e.target.className.includes('card') && elementId != '') {
         flip(elementId);
-    }
-}
-);
-
-// Create event listener
-document.addEventListener('click', (e) => {
-    // Retrieve id from clicked element
-    let lvl = e.target.id;
-    // If element has id
-    if (e.target.className.includes('level') && lvl != '') {
-        updateTime(lvl);
     }
 }
 );
@@ -61,17 +50,6 @@ let items = mix(icons);
 //Recibe el array de iconos y los retorna mezclados
 function mix(icons) {
     return icons.sort(() => Math.random() - 0.5);
-}
-
-//VER NIVELES
-//AL HACER FLIP SE VACIA EL VALOR
-function updateTime(level) {
-    if (level === "extreme") {
-        time = 26;
-    }
-    else {
-        time = 35;
-    }
 }
 
 //Cuando se inicia el juego, comienza a correr el tiempo
