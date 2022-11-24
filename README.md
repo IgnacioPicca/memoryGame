@@ -13,3 +13,10 @@ Pagina web full responsive, desarrollada bajo los principios mobile first.
 La web se encuentra hosteada en Netlify. LINK: https://mentalchallenge.netlify.app/
 
 Actualmente en construcción. 
+
+
+1) Sacar los onClick y poner eventListeners
+2) Utilizar localStorage para los puntajes
+3) Resolver los niveles
+4) Llamar a la api de pokemon para reemplazar las cartas
+5) Ver efectos de las cartas

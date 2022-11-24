@@ -25,7 +25,13 @@ let moves = document.getElementById("moves");
 let start = document.getElementById("btn");
 let end = document.getElementById("endGame")
 let timer = document.getElementById("time")
-let cards = document.getElementsByClassName("card")
+
+// let cards = document.getElementsByClassName("card")
+
+
+// for (let i = 0; i < cards.length; i++) {
+//     cards[i].addEventListener('click', flip(i))
+// }
 
 //Iconos del tablero
 let icons = ["🍌", "🍌", "🍉", "🍉", "🍍", "🍍", "🥕", "🥕", "🥥", "🥥", "🍒", "🍒", "🍓", "🍓", "🍇", "🍇"];
@@ -234,3 +240,6 @@ function showCards() {
         card.classList.add('unavailable');
     }
 }
+
+const card5 = document.getElementById(5);
+card5.addEventListener('click', flip(5))
