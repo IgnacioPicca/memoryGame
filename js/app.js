@@ -121,7 +121,7 @@ function flip(id) {
     }
 
     //Si se hacen 8 puntos, se gana
-    if (match == 1) {
+    if (match == 8) {
         youWin();
     }
 }
