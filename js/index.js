@@ -5,15 +5,10 @@ let time = 0;
 document.addEventListener('click', (evt) => {
     let lvl = evt.target.id;
     if (evt.target.className.includes('level') && lvl != '') {
-        if (lvl === "extreme") {
-            time = 26;
-        }
-        else {
-            time = 35;
-        }
-        const tiempoString = JSON.stringify(time);
-        localStorage.setItem("tiempo", tiempoString)
-        //Reservamos la variable elegida para utilizar en app.js
+        lvl === "extreme" ? time = 26 : time = 35
     }
+    const tiempoString = JSON.stringify(time);
+    localStorage.setItem("tiempo", tiempoString)
+    //Reservamos la variable elegida para utilizar en app.js
 }
 );
