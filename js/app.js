@@ -1,8 +1,10 @@
 //Definimos las variables que modelan el juego
 let statedGame = false;
 let match = 0;
-let time;
-let level = null;
+//Recuperamos el tiempo del local storage
+let tiempo = localStorage.getItem("tiempo")
+//Parseamos y se lo asignamos a la variable time
+let time = JSON.parse(tiempo)
 let flippedCards = 0;
 let attempts = 0;
 let card1;
@@ -27,8 +29,6 @@ let end = document.getElementById("endGame")
 let timer = document.getElementById("time")
 let cards = document.getElementsByClassName("card")
 
-
-
 //Evento click en cartas
 document.addEventListener('click', (e) => {
     // Retrieve id from clicked element
@@ -39,7 +39,6 @@ document.addEventListener('click', (e) => {
     }
 }
 );
-
 
 //Iconos del tablero
 let icons = ["🍌", "🍌", "🍉", "🍉", "🍍", "🍍", "🥕", "🥕", "🥥", "🥥", "🍒", "🍒", "🍓", "🍓", "🍇", "🍇"];
@@ -110,7 +109,7 @@ function flip(id) {
     }
 
     //Si se hacen 8 puntos, se gana
-    if (match == 8) {
+    if (match == 1) {
         youWin();
     }
 }
@@ -146,30 +145,28 @@ function saveScore() {
         confirmButtonText: 'Save',
         showLoaderOnConfirm: true,
         //VER COMO GUARDAR EN EL STORAGE
-        //     preConfirm: (login) => {
-        //         return fetch(`//api.github.com/users/${login}`)
-        //             .then(response => {
-        //                 if (!response.ok) {
-        //                     throw new Error(response.statusText)
-        //                 }
-        //                 return response.json()
-        //             })
-        //             .catch(error => {
-        //                 Swal.showValidationMessage(
-        //                     `Request failed: ${error}`
-        //                 )
-        //             })
-        //     },
-        //     allowOutsideClick: () => !Swal.isLoading()
-        // }).then((result) => {
-        //     if (result.isConfirmed) {
-        //         Swal.fire({
-        //             title: `${result.value.login}'s avatar`,
-        //             imageUrl: result.value.avatar_url
-        //         })
-        //     }
-        // })
-        //Swal.fire('Saved!', '', 'success')
+        preConfirm: (login) => {
+            return fetch(`//api.github.com/users/${login}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(response.statusText)
+                    }
+                    return response.json()
+                })
+                .catch(error => {
+                    Swal.showValidationMessage(
+                        `Request failed: ${error}`
+                    )
+                })
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: `${result.value.login}'s avatar`,
+                imageUrl: result.value.avatar_url
+            })
+        }
     })
 }
 
