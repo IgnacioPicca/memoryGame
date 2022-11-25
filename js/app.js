@@ -29,7 +29,10 @@ let end = document.getElementById("endGame")
 let timer = document.getElementById("time")
 let cards = document.getElementsByClassName("card")
 
-//Evento click en cartas
+
+//Manejo de eventos
+
+//Click in cards event
 document.addEventListener('click', (e) => {
     // Retrieve id from clicked element
     let elementId = e.target.id;
@@ -39,6 +42,16 @@ document.addEventListener('click', (e) => {
     }
 }
 );
+
+//Evento mejores puntajes
+document.addEventListener('click', (e) => {
+    if (e.target.className.includes('topScore')) {
+        showScores();
+    }
+}
+);
+
+
 
 //Iconos del tablero
 let icons = ["🍌", "🍌", "🍉", "🍉", "🍍", "🍍", "🥕", "🥕", "🥥", "🥥", "🍒", "🍒", "🍓", "🍓", "🍇", "🍇"];
@@ -71,7 +84,6 @@ function flip(id) {
 
     //Iniciamos el juego
     if (!statedGame) {
-        console.log(time)
         startGame();
         statedGame = true;
     }
@@ -137,36 +149,22 @@ function checkMatch(card1Value, card2Value) {
         }, 650)
 }
 
-//TODO.- IMPLEMENTAR TABLA DE SCORES
-function saveScore() {
+function youLose() {
+    music.pause();
+    loseAudio.play();
+    //Paramos el tiempo
+    clearInterval(countTime);
+    showCards();
+    //Mostramos cartel de derrota y preguntamos si queremos jugar otra vez
     Swal.fire({
-        title: 'Submit your amazing name',
-        input: 'text',
-        confirmButtonText: 'Save',
-        showLoaderOnConfirm: true,
-        //VER COMO GUARDAR EN EL STORAGE
-        preConfirm: (login) => {
-            return fetch(`//api.github.com/users/${login}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(response.statusText)
-                    }
-                    return response.json()
-                })
-                .catch(error => {
-                    Swal.showValidationMessage(
-                        `Request failed: ${error}`
-                    )
-                })
-        },
-        allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: `${result.value.login}'s avatar`,
-                imageUrl: result.value.avatar_url
-            })
-        }
+        title: 'Oops...',
+        text: 'Nt burrito!',
+        icon: 'error',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
+        cancelButtonText: '<a class="noLink topScore">Top scores</a>',
     })
 }
 
@@ -189,30 +187,11 @@ function youWin() {
         showCancelButton: true,
         confirmButtonText: 'Save',
         denyButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
-        cancelButtonText: '<a class="noLink" href="https://www.google.com.ar/">Exit</a>',
+        cancelButtonText: '<a class="noLink topScore">Top scores</a>',
     }).then((result) => {
         if (result.isConfirmed) {
             saveScore();
         }
-    })
-}
-
-function youLose() {
-    music.pause();
-    loseAudio.play();
-    //Paramos el tiempo
-    clearInterval(countTime);
-    showCards();
-    //Mostramos cartel de derrota y preguntamos si queremos jugar otra vez
-    Swal.fire({
-        title: 'Oops...',
-        text: 'Nt burrito!',
-        icon: 'error',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
-        cancelButtonText: '<a class="noLink" href="https://www.google.com.ar/">Exit</a>'
     })
 }
 
@@ -225,4 +204,53 @@ function showCards() {
         //Bloqueamos su uso
         card.classList.add('unavailable');
     }
+}
+
+//TODO.- IMPLEMENTAR TABLA DE SCORES
+function saveScore() {
+    Swal.fire({
+        title: 'Submit your amazing name',
+        input: 'text',
+        confirmButtonText: 'Save',
+        showLoaderOnConfirm: true,
+        inputValidator: nombre => {
+            if (!nombre) {
+                return "Por favor escribe tu nombre";
+            } else {
+                return undefined;
+            }
+        }
+    })
+        .then(resultado => {
+            if (resultado.value) {
+                //En nombre tenemos el usuario
+                let nombre = resultado.value;
+                //En score tenemos el puntaje
+                score = getPoints();
+                setScore(nombre, score);
+                // console.log("Hola, " + nombre + score);
+            }
+        });
+}
+
+//Mostramos los scores y los usuarios por consola
+function showScores() {
+    for (let i = 1; i < localStorage.length; i++) {
+        let users = localStorage.key(i)
+        let scores = localStorage.getItem(localStorage.key(i))
+        console.log("El usuario:", users + " hizo", scores)
+    }
+}
+
+function getPoints() {
+    return points - attempts + time;
+}
+
+//Guardamos los puntajes en el localStorage
+function setScore(nombre, score) {
+    const nombreString = JSON.stringify(nombre);
+    const scoreString = JSON.stringify(score);
+    localStorage.setItem("Nombre usuario", nombreString)
+    localStorage.setItem("Score usuario", scoreString)
+
 }

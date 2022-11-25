@@ -10,9 +10,7 @@ document.addEventListener('click', (evt) => {
         }
         else {
             time = 35;
-
         }
-
         const tiempoString = JSON.stringify(time);
         localStorage.setItem("tiempo", tiempoString)
         //Reservamos la variable elegida para utilizar en app.js
