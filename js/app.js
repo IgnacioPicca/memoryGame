@@ -234,6 +234,7 @@ function saveScore() {
 }
 
 //Mostramos los scores y los usuarios por consola
+//TODO.- MOSTRAR SCORES - LE PASAMOS UN OBJ?
 function showScores() {
     for (let i = 1; i < localStorage.length; i++) {
         let users = localStorage.key(i)
