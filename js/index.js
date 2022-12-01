@@ -8,7 +8,7 @@ document.addEventListener('click', (evt) => {
         lvl === "extreme" ? time = 26 : time = 35
     }
     const tiempoString = JSON.stringify(time);
-    localStorage.setItem("tiempo", tiempoString)
+    sessionStorage.setItem("tiempo", tiempoString)
     //Reservamos la variable elegida para utilizar en app.js
 }
 );

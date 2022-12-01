@@ -2,7 +2,7 @@
 let statedGame = false;
 let match = 0;
 //Recuperamos el tiempo del local storage
-let tiempo = localStorage.getItem("tiempo")
+let tiempo = sessionStorage.getItem("tiempo")
 //Parseamos y se lo asignamos a la variable time
 let time = JSON.parse(tiempo)
 let flippedCards = 0;
@@ -13,6 +13,7 @@ let card2;
 let card2Value;
 let countTime = null;
 let points = 100;
+let topFive = [];  // En top five se van a guardar los 5 mejores scores.
 //Sonidos
 let firstCardAudio = new Audio("./sounds/firstCard.wav")
 let matchAudio = new Audio("./sounds/match.wav")
@@ -223,23 +224,18 @@ function saveScore() {
     })
         .then(resultado => {
             if (resultado.value) {
-                //En nombre tenemos el usuario
-                let nombre = resultado.value;
-                //En score tenemos el puntaje
-                score = getPoints();
-                setScore(nombre, score);
-                // console.log("Hola, " + nombre + score);
+                let user = { nombre: resultado.value, score: getPoints() }
+                setScore(user);
             }
         });
 }
 
 //Mostramos los scores y los usuarios por consola
-//TODO.- MOSTRAR SCORES - LE PASAMOS UN OBJ?
 function showScores() {
     for (let i = 1; i < localStorage.length; i++) {
-        let users = localStorage.key(i)
-        let scores = localStorage.getItem(localStorage.key(i))
-        console.log("El usuario:", users + " hizo", scores)
+        let nombre = localStorage.key(i)
+        let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        console.log("El usuario:", nombre + " hizo", usuarios.score)
     }
 }
 
@@ -247,11 +243,6 @@ function getPoints() {
     return points - attempts + time;
 }
 
-//Guardamos los puntajes en el localStorage
-function setScore(nombre, score) {
-    const nombreString = JSON.stringify(nombre);
-    const scoreString = JSON.stringify(score);
-    localStorage.setItem("Nombre usuario", nombreString)
-    localStorage.setItem("Score usuario", scoreString)
-
+function setScore(user) {
+    localStorage.setItem(user.nombre, JSON.stringify(user))
 }

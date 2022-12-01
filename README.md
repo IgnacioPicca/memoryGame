@@ -15,8 +15,8 @@ La web se encuentra hosteada en Netlify. LINK: https://mentalchallenge.netlify.a
 Actualmente en construcción. 
 
 
-1) Sacar los onClick y poner eventListeners
-2) Utilizar localStorage para los puntajes
-3) Resolver los niveles
+1) Sacar los onClick y poner eventListeners.    LISTO
+2) Resolver los niveles.    LISTO
+3) Utilizar localStorage para los puntajes.     
 4) Llamar a la api de pokemon para reemplazar las cartas
 5) Ver efectos de las cartas
