@@ -232,7 +232,7 @@ function saveScore() {
 
 //Mostramos los scores y los usuarios por consola
 function showScores() {
-    for (let i = 1; i < localStorage.length; i++) {
+    for (let i = 0; i < localStorage.length; i++) {
         let nombre = localStorage.key(i)
         let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
         console.log("El usuario:", nombre + " hizo", usuarios.score)
