@@ -159,7 +159,7 @@ function youLose() {
     //Mostramos cartel de derrota y preguntamos si queremos jugar otra vez
     Swal.fire({
         title: 'Oops...',
-        text: 'Nt burrito!',
+        text: 'Nice try!',
         icon: 'error',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
