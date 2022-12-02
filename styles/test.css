@@ -1,0 +1,23 @@
+table {
+    width: 400px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 4px;
+    font-family: 'Sono', sans-serif;
+}
+
+td {
+    vertical-align: top;
+    padding: 16px 16px;
+    text-align: center;
+}
+
+.title {
+    background-color: rgb(34, 193, 195);
+    font-weight: 600;
+}
+
+.point,
+.user {
+    background-color: rgb(188, 241, 241)
+}

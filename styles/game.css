@@ -12,7 +12,7 @@ body {
 
 .title {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 30px;
     font-family: 'Sono', sans-serif;
     color: white;
 }
@@ -73,7 +73,7 @@ body {
     align-items: center;
     font-size: 20px;
     border: 1px solid white;
-    margin: 180px auto;
+    margin: 160px auto;
     border-radius: 10px;
 }
 
@@ -144,4 +144,28 @@ footer {
     background-image: linear-gradient(60deg, #7affd3, #00ffd5);
     background-clip: text;
     color: transparent;
+}
+
+table {
+    width: 400px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 4px;
+    font-family: 'Sono', sans-serif;
+}
+
+td {
+    vertical-align: top;
+    padding: 16px 16px;
+    text-align: center;
+}
+
+.title {
+    background-color: rgb(34, 193, 195);
+    font-weight: 600;
+}
+
+.point,
+.user {
+    background-color: rgb(188, 241, 241)
 }
