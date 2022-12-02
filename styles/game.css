@@ -147,7 +147,7 @@ footer {
 }
 
 table {
-    width: 400px;
+    max-width: 400px;
     margin: 0 auto;
     border-collapse: separate;
     border-spacing: 4px;
@@ -156,11 +156,11 @@ table {
 
 td {
     vertical-align: top;
-    padding: 16px 16px;
+    padding: 10px 40px;
     text-align: center;
 }
 
-.title {
+.title-td {
     background-color: rgb(34, 193, 195);
     font-weight: 600;
 }

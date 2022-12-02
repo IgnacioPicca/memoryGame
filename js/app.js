@@ -242,11 +242,45 @@ function playAgain() {
 
 //Mostramos los scores y los usuarios por consola
 function showScores() {
-    for (let i = 0; i < localStorage.length; i++) {
-        let nombre = localStorage.key(i)
-        let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
-        console.log("El usuario", nombre + " hizo", usuarios.score + "puntos")
-    }
+    // for (let i = 0; i < localStorage.length; i++) {
+    //     let nombre = localStorage.key(i)
+    //     let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    //     console.log("El usuario", nombre + " hizo", usuarios.score + "puntos")
+    // }
+    Swal.fire({
+        title: '<strong>TOP FIVE</strong>',
+        html:
+            `<table>
+        <tbody>
+            <tr>
+                <td class="title-td">Users</td>
+                <td class="title-td">Points</td>
+            </tr>
+            <tr>
+                <td class="user">User1</td>
+                <td class="point">123</td>
+            </tr>
+            <tr>
+                <td class="user">User2</td>
+                <td class="point">123</td>
+            </tr>
+            <tr>
+                <td class="user">User3</td>
+                <td class="point">123</td>
+            </tr>
+            <tr>
+                <td class="user">User4</td>
+                <td class="point">123</td>
+            </tr>
+            <tr>
+                <td class="user">User5</td>
+                <td class="point">123</td>
+            </tr>
+        </tbody>
+    </table>
+  `,
+        confirmButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
+    })
 }
 
 function getPoints() {
