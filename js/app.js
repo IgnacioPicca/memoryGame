@@ -226,8 +226,18 @@ function saveScore() {
             if (resultado.value) {
                 let user = { nombre: resultado.value, score: getPoints() }
                 setScore(user);
+                playAgain();
             }
         });
+}
+
+function playAgain() {
+    Swal.fire({
+        title: 'Do you want to play again?',
+        showDenyButton: true,
+        confirmButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
+        denyButtonText: `Cancel`,
+    })
 }
 
 //Mostramos los scores y los usuarios por consola
@@ -235,7 +245,7 @@ function showScores() {
     for (let i = 0; i < localStorage.length; i++) {
         let nombre = localStorage.key(i)
         let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
-        console.log("El usuario:", nombre + " hizo", usuarios.score)
+        console.log("El usuario", nombre + " hizo", usuarios.score + "puntos")
     }
 }
 

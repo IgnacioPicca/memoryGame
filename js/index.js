@@ -1,5 +1,5 @@
 //Definimos la variable a modificar
-let time = 0;
+let time = 35;
 
 // Evento click en nivel
 document.addEventListener('click', (evt) => {
