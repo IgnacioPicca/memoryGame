@@ -53,7 +53,6 @@ document.addEventListener('click', (e) => {
 );
 
 
-
 //Iconos del tablero
 let icons = ["🍌", "🍌", "🍉", "🍉", "🍍", "🍍", "🥕", "🥕", "🥥", "🥥", "🍒", "🍒", "🍓", "🍓", "🍇", "🍇"];
 
@@ -257,24 +256,24 @@ function showScores() {
                 <td class="title-td">Points</td>
             </tr>
             <tr>
-                <td class="user">User1</td>
-                <td class="point">123</td>
+                <td class="user">${topFive[0].name}</td>
+                <td class="point">${topFive[0].score}</td>
             </tr>
             <tr>
-                <td class="user">User2</td>
-                <td class="point">123</td>
+                <td class="user">${topFive[1].name}</td>
+                <td class="point">${topFive[1].score}</td>
             </tr>
             <tr>
-                <td class="user">User3</td>
-                <td class="point">123</td>
+                <td class="user">${topFive[2].name}</td>
+                <td class="point">${topFive[2].score}</td>
             </tr>
             <tr>
-                <td class="user">User4</td>
-                <td class="point">123</td>
+                <td class="user">${topFive[3].name}</td>
+                <td class="point">${topFive[3].score}</td>
             </tr>
             <tr>
-                <td class="user">User5</td>
-                <td class="point">123</td>
+                <td class="user">${topFive[4].name}</td>
+                <td class="point">${topFive[4].score}</td>
             </tr>
         </tbody>
     </table>

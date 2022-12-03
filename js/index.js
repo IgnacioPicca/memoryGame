@@ -1,5 +1,4 @@
-//Definimos la variable a modificar
-let time = 35;
+let time = 0;
 
 // Evento click en nivel
 document.addEventListener('click', (evt) => {
@@ -12,3 +11,11 @@ document.addEventListener('click', (evt) => {
     //Reservamos la variable elegida para utilizar en app.js
 }
 );
+
+//Evento click en play
+const btn = document.querySelector('#btn')
+btn.addEventListener("click", () => {
+    time == 0 ? Swal.fire('Please choose a level') : location.href = "./game.html";
+}
+);
+

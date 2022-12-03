@@ -85,6 +85,31 @@ body {
     box-shadow: 0 0 40px 40px #40ff00 inset;
 }
 
+.autor-container {
+    align-items: center;
+    min-height: 80px;
+    padding: 1em;
+    color: white;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.autor {
+    font-size: 16px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-family: 'Sono', sans-serif;
+
+}
+
+.github {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(60deg, #7affd3, #00ffd5);
+    background-clip: text;
+    color: transparent;
+}
 
 /* Boton */
 
@@ -175,30 +200,3 @@ body {
     transform: translate(-50%, -50%);
     animation: ring 1.5s infinite;
 } */
-
-
-.autor-container {
-    align-items: center;
-    min-height: 80px;
-    padding: 1em;
-    color: white;
-    text-align: center;
-    position: relative;
-    margin: 0 auto;
-}
-
-.autor {
-    font-size: 16px;
-    margin: 0 auto;
-    font-weight: bold;
-    font-family: 'Sono', sans-serif;
-
-}
-
-.github {
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(60deg, #7affd3, #00ffd5);
-    background-clip: text;
-    color: transparent;
-}
