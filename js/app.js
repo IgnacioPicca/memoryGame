@@ -13,7 +13,10 @@ let card2;
 let card2Value;
 let countTime = null;
 let points = 100;
-let topFive = [];  // En top five se van a guardar los 5 mejores scores.
+let topFive = [{ name: "Nach", score: 0 }, { name: "---", score: 0 },
+{ name: "---", score: 0 }, { name: "---", score: 0 },
+{ name: "---", score: 0 },
+];  // En top five se van a guardar los 5 mejores scores.
 //Sonidos
 let firstCardAudio = new Audio("./sounds/firstCard.wav")
 let matchAudio = new Audio("./sounds/match.wav")
@@ -51,7 +54,6 @@ document.addEventListener('click', (e) => {
     }
 }
 );
-
 
 //Iconos del tablero
 let icons = ["🍌", "🍌", "🍉", "🍉", "🍍", "🍍", "🥕", "🥕", "🥥", "🥥", "🍒", "🍒", "🍓", "🍓", "🍇", "🍇"];
@@ -213,9 +215,9 @@ function saveScore() {
         input: 'text',
         confirmButtonText: 'Save',
         showLoaderOnConfirm: true,
-        inputValidator: nombre => {
-            if (!nombre) {
-                return "Por favor escribe tu nombre";
+        inputValidator: name => {
+            if (!name) {
+                return "Please write your name";
             } else {
                 return undefined;
             }
@@ -223,7 +225,7 @@ function saveScore() {
     })
         .then(resultado => {
             if (resultado.value) {
-                let user = { nombre: resultado.value, score: getPoints() }
+                let user = { name: resultado.value, score: getPoints() }
                 setScore(user);
                 playAgain();
             }
@@ -287,5 +289,11 @@ function getPoints() {
 }
 
 function setScore(user) {
-    localStorage.setItem(user.nombre, JSON.stringify(user))
+    for (let i = 0; i < topFive.length; i++) {
+        if (topFive[i].score < user.score) {
+            topFive[i].name = user.name
+            topFive[i].score = user.score
+            break;
+        }
+    }
 }
