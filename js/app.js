@@ -13,10 +13,11 @@ let card2;
 let card2Value;
 let countTime = null;
 let points = 100;
-let topFive = [{ name: "Nach", score: 0 }, { name: "---", score: 0 },
+let topFive = [{ name: "---", score: 0 }, { name: "---", score: 0 },
 { name: "---", score: 0 }, { name: "---", score: 0 },
 { name: "---", score: 0 },
-];  // En top five se van a guardar los 5 mejores scores.
+];
+// En top five se van a guardar los 5 mejores scores.
 //Sonidos
 let firstCardAudio = new Audio("./sounds/firstCard.wav")
 let matchAudio = new Audio("./sounds/match.wav")
@@ -243,11 +244,17 @@ function playAgain() {
 
 //Mostramos los scores y los usuarios por consola
 function showScores() {
-    // for (let i = 0; i < localStorage.length; i++) {
-    //     let nombre = localStorage.key(i)
-    //     let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    //     console.log("El usuario", nombre + " hizo", usuarios.score + "puntos")
-    // }
+
+    for (let i = 1; i < localStorage.length; i++) {
+        let name = localStorage.key(i)
+        let point = JSON.parse(localStorage.getItem(localStorage.key(i))).score
+        console.log("El usuario", name + " hizo", point + " puntos")
+
+        topFive.push({ name, point })
+        topFive.sort();
+        // topFive[1].name = name
+        // topFive[1].score = point
+    }
     Swal.fire({
         title: '<strong>TOP FIVE</strong>',
         html:
@@ -289,10 +296,17 @@ function getPoints() {
 }
 
 function setScore(user) {
-    for (let i = 0; i < topFive.length; i++) {
-        if (topFive[i].score < user.score) {
-            topFive[i].name = user.name
-            topFive[i].score = user.score
+
+    //Iteramos el local storage
+    for (let i = 1; i < localStorage.length; i++) {
+        //Reservamos el nombre y el puntaje
+        // let name = localStorage.key(i)
+        let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
+
+        //Si el puntaje del usuario nuevo es mayor al puntaje del usuario viejo
+        //Guardamos en el localstorage
+        if (user.score > usuarios.score) {
+            localStorage.setItem(user.name, JSON.stringify(user))
             break;
         }
     }
