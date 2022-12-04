@@ -13,10 +13,7 @@ let card2;
 let card2Value;
 let countTime = null;
 let points = 100;
-let topFive = [{ name: "---", score: 0 }, { name: "---", score: 0 },
-{ name: "---", score: 0 }, { name: "---", score: 0 },
-{ name: "---", score: 0 },
-];
+let topFive = [];
 // En top five se van a guardar los 5 mejores scores.
 //Sonidos
 let firstCardAudio = new Audio("./sounds/firstCard.wav")
@@ -245,16 +242,15 @@ function playAgain() {
 //Mostramos los scores y los usuarios por consola
 function showScores() {
 
-    for (let i = 1; i < localStorage.length; i++) {
+    for (let i = 0; i < localStorage.length; i++) {
         let name = localStorage.key(i)
         let point = JSON.parse(localStorage.getItem(localStorage.key(i))).score
         console.log("El usuario", name + " hizo", point + " puntos")
-
+        console.log(topFive)
         topFive.push({ name, point })
-        topFive.sort();
-        // topFive[1].name = name
-        // topFive[1].score = point
+
     }
+    // sortTopFive(topFive);
     Swal.fire({
         title: '<strong>TOP FIVE</strong>',
         html:
@@ -266,29 +262,46 @@ function showScores() {
             </tr>
             <tr>
                 <td class="user">${topFive[0].name}</td>
-                <td class="point">${topFive[0].score}</td>
+                <td class="point">${topFive[0].point}</td>
             </tr>
             <tr>
                 <td class="user">${topFive[1].name}</td>
-                <td class="point">${topFive[1].score}</td>
+                <td class="point">${topFive[2].point}</td>
             </tr>
             <tr>
                 <td class="user">${topFive[2].name}</td>
-                <td class="point">${topFive[2].score}</td>
+                <td class="point">${topFive[2].point}</td>
             </tr>
             <tr>
                 <td class="user">${topFive[3].name}</td>
-                <td class="point">${topFive[3].score}</td>
+                <td class="point">${topFive[3].point}</td>
             </tr>
             <tr>
-                <td class="user">${topFive[4].name}</td>
-                <td class="point">${topFive[4].score}</td>
+                <td class="user">${topFive[1].name}</td>
+                <td class="point">${topFive[1].point}</td>
             </tr>
         </tbody>
     </table>
   `,
         confirmButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
     })
+}
+
+function sortTopFive(topFive) {
+
+    console.log("sin ordenar --- >" + topFive)
+
+    topFive.sort(function (a, b) {
+        if (a.point > b.point) {
+            return 1;
+        }
+        if (a.point < b.point) {
+            return -1;
+        }
+        return 0;
+    });
+
+    console.log("ordenado --- >" + topFive)
 }
 
 function getPoints() {
