@@ -14,11 +14,11 @@ let card2Value;
 let countTime = null;
 let points = 100;
 let topFive = [
-    { name: 'John', point: 10 },
-    { name: 'Rain', point: 150 },
-    { name: 'Ralph', point: 75 },
-    { name: 'Ryan', point: 100 },
-    { name: 'Sam', point: 35 }];
+    { name: 'Ash', point: 95 },
+    { name: 'Brock', point: 81 },
+    { name: 'Jessie', point: 75 },
+    { name: 'Misty', point: 46 },
+    { name: 'Oak', point: 35 }];
 // En top five se van a guardar los 5 mejores scores.
 
 //Sonidos
@@ -220,7 +220,7 @@ function youWin() {
         title: 'You won! </br>',
         html: `With ${attempts} moves & ${points - attempts + time} points </br></br> Do you want to save your score?`,
         width: 600,
-        padding: '3em',
+        padding: '2em',
         color: 'rgba(34, 193, 195, 1)',
         showDenyButton: true,
         showCancelButton: true,
@@ -298,8 +298,8 @@ function showScores() {
             `<table>
         <tbody>
             <tr>
-                <td class="title-td">Users</td>
-                <td class="title-td">Points</td>
+                <td class="title-td">Player</td>
+                <td class="title-td">Point</td>
             </tr>
             <tr>
                 <td class="user">${topFive[0].name}</td>

@@ -170,11 +170,17 @@ td {
 }
 
 .title-td {
-    background-color: rgb(34, 193, 195);
+    background-color: rgb(255, 0, 0);
     font-weight: 600;
 }
 
 .point,
 .user {
-    background-color: rgb(188, 241, 241)
+    background-color: rgb(241, 188, 188)
+}
+
+.swal2-popup {
+    text-align: center;
+    font-family: 'Sono', sans-serif;
+    color: white;
 }
