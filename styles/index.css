@@ -2,6 +2,7 @@ body {
     background: rgb(34, 193, 195);
     background: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgba(0, 0, 0, 1) 100%);
     height: 100vh;
+    overflow-y: hidden;
 }
 
 .noLink {
@@ -11,16 +12,17 @@ body {
 
 .title {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 80px;
     font-family: 'Sono', sans-serif;
     color: white;
+    font-size: 3em;
 }
 
 .text {
     text-align: center;
     font-family: 'Sono', sans-serif;
     color: white;
-    font-size: 20px;
+    font-size: 1.5em;
 }
 
 .container {
@@ -96,7 +98,7 @@ body {
 }
 
 .autor {
-    font-size: 16px;
+    font-size: 1.2em;
     margin: 0 auto;
     font-weight: bold;
     font-family: 'Sono', sans-serif;
@@ -137,7 +139,7 @@ body {
     cursor: pointer;
     outline: none;
     padding: 10px;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
 .button::before {
@@ -172,8 +174,8 @@ body {
     display: none;
 }
 
-/* 
-@keyframes ring {
+
+/* @keyframes ring {
     0% {
         width: 30px;
         height: 30px;
@@ -195,7 +197,7 @@ body {
     border: 6px solid #00FFCB;
     position: absolute;
     z-index: -1;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     animation: ring 1.5s infinite;

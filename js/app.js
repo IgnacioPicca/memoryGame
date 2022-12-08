@@ -60,15 +60,49 @@ document.addEventListener('click', (e) => {
 );
 
 //Iconos del tablero
-let icons = ["🍌", "🍌", "🍉", "🍉", "🍍", "🍍", "🥕", "🥕", "🥥", "🥥", "🍒", "🍒", "🍓", "🍓", "🍇", "🍇"];
+// let icons = ["🍌", "🍌", "🍉", "🍉", "🍍", "🍍", "🥕", "🥕", "🥥", "🥥", "🍒", "🍒", "🍓", "🍓", "🍇", "🍇"];
 
 //Los mezclamos
-let items = mix(icons);
+// let items = mix(icons);
 
 //Recibe el array de iconos y los retorna mezclados
-function mix(icons) {
-    return icons.sort(() => Math.random() - 0.5);
+// function mix(icons) {
+//     return icons.sort(() => Math.random() - 0.5);
+// }
+
+//Los mezclamos
+// let items = mix(imgSrc);
+
+//Pokemons del tablero
+let pokes = [
+    create(1), create(1), create(4), create(4),
+    create(7), create(7), create(25), create(25),
+    create(39), create(39), create(54), create(54),
+    create(104), create(104), create(151), create(151)
+];
+
+
+let imgSrc = []
+
+
+async function create(id) {
+    const pok = await getPoke(id)
+    let src = pok.sprites.front_shiny;
+    imgSrc.push(src)
+    imgSrc.sort(() => Math.random() - 0.5);
 }
+
+async function getPoke(id) {
+    try {
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        const data = await res.json()
+        return data
+    } catch (e) {
+        console.log("Error")
+    }
+}
+
+
 
 //Cuando se inicia el juego, comienza a correr el tiempo
 const startGame = () => {
@@ -103,9 +137,9 @@ function flip(id) {
         //Capturamos la carta que se elige 
         card1 = document.getElementById(id)
         //Le asignamos un valor del arreglo
-        card1Value = items[id]
+        card1Value = imgSrc[id]
         //Mostramos el valor asignado
-        card1.innerHTML = items[id]
+        card1.innerHTML = `<img src="${imgSrc[id]}" alt="">`
         //Le agregamos la clase unavailable
         card1.classList.add('unavailable')
     }
@@ -115,9 +149,9 @@ function flip(id) {
         //Capturamos la carta que se elige 
         card2 = document.getElementById(id)
         //Le asignamos un valor del arreglo
-        card2Value = items[id]
+        card2Value = imgSrc[id]
         //Mostramos el valor asignado
-        card2.innerHTML = items[id]
+        card2.innerHTML = `<img src="${imgSrc[id]}" alt="">`
         //Sumamos un intento
         attempts++;
         //Actualizamos los movimientos
@@ -188,7 +222,6 @@ function youWin() {
         width: 600,
         padding: '3em',
         color: 'rgba(34, 193, 195, 1)',
-        background: '#fff url(/images/trees.png)',
         showDenyButton: true,
         showCancelButton: true,
         confirmButtonText: 'Save',
@@ -202,11 +235,11 @@ function youWin() {
 }
 
 function showCards() {
-    for (let i = 0; i < icons.length; i++) {
+    for (let i = 0; i < pokes.length; i++) {
         //Capturamos todas las cartas
         let card = document.getElementById(i);
         //Printeamos su contenido
-        card.innerHTML = items[i];
+        card.innerHTML = `<img src="${imgSrc[i]}" alt="">`
         //Bloqueamos su uso
         card.classList.add('unavailable');
     }
@@ -218,7 +251,6 @@ function saveScore() {
         title: 'Submit your amazing name',
         input: 'text',
         confirmButtonText: 'Save',
-        showLoaderOnConfirm: true,
         inputValidator: name => {
             if (!name) {
                 return "Please write your name";
@@ -240,8 +272,10 @@ function playAgain() {
     Swal.fire({
         title: 'Do you want to play again?',
         showDenyButton: true,
+        showCancelButton: true,
         confirmButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
         denyButtonText: `Cancel`,
+        cancelButtonText: '<a class="noLink topScore">Top scores</a>',
     })
 }
 
@@ -251,10 +285,10 @@ function showScores() {
     for (let i = 0; i < localStorage.length; i++) {
         let name = localStorage.key(i)
         let point = JSON.parse(localStorage.getItem(localStorage.key(i))).score
-        console.log("El usuario", name + " hizo", point + " puntos")
+        // console.log("El usuario", name + " hizo", point + " puntos")
         topFive.push({ name, point })
         topFive.sort(sortTopFive);
-        console.log(topFive)
+        // console.log(topFive)
 
     }
     // sortTopFive(topFive);
