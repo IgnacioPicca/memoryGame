@@ -13,8 +13,14 @@ let card2;
 let card2Value;
 let countTime = null;
 let points = 100;
-let topFive = [];
+let topFive = [
+    { name: 'John', point: 10 },
+    { name: 'Rain', point: 150 },
+    { name: 'Ralph', point: 75 },
+    { name: 'Ryan', point: 100 },
+    { name: 'Sam', point: 35 }];
 // En top five se van a guardar los 5 mejores scores.
+
 //Sonidos
 let firstCardAudio = new Audio("./sounds/firstCard.wav")
 let matchAudio = new Audio("./sounds/match.wav")
@@ -246,8 +252,9 @@ function showScores() {
         let name = localStorage.key(i)
         let point = JSON.parse(localStorage.getItem(localStorage.key(i))).score
         console.log("El usuario", name + " hizo", point + " puntos")
-        console.log(topFive)
         topFive.push({ name, point })
+        topFive.sort(sortTopFive);
+        console.log(topFive)
 
     }
     // sortTopFive(topFive);
@@ -266,7 +273,7 @@ function showScores() {
             </tr>
             <tr>
                 <td class="user">${topFive[1].name}</td>
-                <td class="point">${topFive[2].point}</td>
+                <td class="point">${topFive[1].point}</td>
             </tr>
             <tr>
                 <td class="user">${topFive[2].name}</td>
@@ -277,8 +284,8 @@ function showScores() {
                 <td class="point">${topFive[3].point}</td>
             </tr>
             <tr>
-                <td class="user">${topFive[1].name}</td>
-                <td class="point">${topFive[1].point}</td>
+                <td class="user">${topFive[4].name}</td>
+                <td class="point">${topFive[4].point}</td>
             </tr>
         </tbody>
     </table>
@@ -287,21 +294,8 @@ function showScores() {
     })
 }
 
-function sortTopFive(topFive) {
-
-    console.log("sin ordenar --- >" + topFive)
-
-    topFive.sort(function (a, b) {
-        if (a.point > b.point) {
-            return 1;
-        }
-        if (a.point < b.point) {
-            return -1;
-        }
-        return 0;
-    });
-
-    console.log("ordenado --- >" + topFive)
+function sortTopFive(a, b) {
+    return b.point - a.point;
 }
 
 function getPoints() {
@@ -310,17 +304,22 @@ function getPoints() {
 
 function setScore(user) {
 
-    //Iteramos el local storage
-    for (let i = 1; i < localStorage.length; i++) {
-        //Reservamos el nombre y el puntaje
-        // let name = localStorage.key(i)
-        let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
-
-        //Si el puntaje del usuario nuevo es mayor al puntaje del usuario viejo
-        //Guardamos en el localstorage
-        if (user.score > usuarios.score) {
-            localStorage.setItem(user.name, JSON.stringify(user))
-            break;
+    //Si el localStorage no tiene 5 usuarios guardados, los ingresamos
+    if (localStorage.length < 5) {
+        localStorage.setItem(user.name, JSON.stringify(user))
+    }
+    else {
+        //Iteramos el local storage
+        for (let i = 0; i < localStorage.length; i++) {
+            //Reservamos el nombre y el puntaje
+            // let name = localStorage.key(i)
+            let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
+            //Si el puntaje del usuario nuevo es mayor al puntaje del usuario viejo
+            //Guardamos en el localstorage
+            if (user.score > usuarios.score) {
+                localStorage.setItem(user.name, JSON.stringify(user))
+                break;
+            }
         }
     }
 }
