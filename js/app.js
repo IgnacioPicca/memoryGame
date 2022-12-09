@@ -1,9 +1,6 @@
-//Definimos las variables que modelan el juego
 let statedGame = false;
 let match = 0;
-//Recuperamos el tiempo del local storage
 let tiempo = sessionStorage.getItem("tiempo")
-//Parseamos y se lo asignamos a la variable time
 let time = JSON.parse(tiempo)
 let flippedCards = 0;
 let attempts = 0;
@@ -18,10 +15,10 @@ let topFive = [
     { name: 'Brock', point: 81 },
     { name: 'Jessie', point: 75 },
     { name: 'Misty', point: 46 },
-    { name: 'Oak', point: 35 }];
-// En top five se van a guardar los 5 mejores scores.
+    { name: 'Oak', point: 35 }
+];
+let imgSrc = []
 
-//Sonidos
 let firstCardAudio = new Audio("./sounds/firstCard.wav")
 let matchAudio = new Audio("./sounds/match.wav")
 let noMatch = new Audio("./sounds/noMatch.wav")
@@ -30,48 +27,46 @@ let win = new Audio("./sounds/win.wav")
 let music = new Audio("./sounds/music.wav")
 music.volume = 0.1;
 
-//Capturamos los elementos del DOM
 let moves = document.getElementById("moves");
 let start = document.getElementById("btn");
 let end = document.getElementById("endGame")
 let timer = document.getElementById("time")
 let cards = document.getElementsByClassName("card")
+let musicOn = document.querySelector("#music-on")
+let musicOff = document.querySelector("#music-off")
 
 
 //Manejo de eventos
 
-//Click in cards event
+musicOff.addEventListener('click', (e) => {
+    console.log("music off")
+    music.play();
+    e.target.style.display = "none"
+    musicOn.style.display = "block"
+})
+
+musicOn.addEventListener('click', (e) => {
+    console.log("music on")
+    music.pause();
+    e.target.style.display = "none"
+    musicOff.style.display = "block"
+
+})
+
 document.addEventListener('click', (e) => {
-    // Retrieve id from clicked element
     let elementId = e.target.id;
-    // If element has id
     if (e.target.className.includes('card') && elementId != '') {
         flip(elementId);
     }
 }
 );
 
-//Evento mejores puntajes
 document.addEventListener('click', (e) => {
     if (e.target.className.includes('topScore')) {
         showScores();
     }
 }
 );
-
-//Iconos del tablero
-// let icons = ["🍌", "🍌", "🍉", "🍉", "🍍", "🍍", "🥕", "🥕", "🥥", "🥥", "🍒", "🍒", "🍓", "🍓", "🍇", "🍇"];
-
-//Los mezclamos
-// let items = mix(icons);
-
-//Recibe el array de iconos y los retorna mezclados
-// function mix(icons) {
-//     return icons.sort(() => Math.random() - 0.5);
-// }
-
-//Los mezclamos
-// let items = mix(imgSrc);
 
 //Pokemons del tablero
 let pokes = [
@@ -81,13 +76,9 @@ let pokes = [
     create(104), create(104), create(151), create(151)
 ];
 
-
-let imgSrc = []
-
-
 async function create(id) {
     const pok = await getPoke(id)
-    let src = pok.sprites.front_shiny;
+    let src = pok.sprites.other.dream_world.front_default;
     imgSrc.push(src)
     imgSrc.sort(() => Math.random() - 0.5);
 }
@@ -101,8 +92,6 @@ async function getPoke(id) {
         console.log("Error")
     }
 }
-
-
 
 //Cuando se inicia el juego, comienza a correr el tiempo
 const startGame = () => {
@@ -205,6 +194,8 @@ function youLose() {
         cancelButtonColor: '#d33',
         confirmButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
         cancelButtonText: '<a class="noLink topScore">Top scores</a>',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
     })
 }
 
@@ -227,6 +218,8 @@ function youWin() {
         confirmButtonText: 'Save',
         denyButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
         cancelButtonText: '<a class="noLink topScore">Top scores</a>',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
     }).then((result) => {
         if (result.isConfirmed) {
             saveScore();
@@ -245,9 +238,10 @@ function showCards() {
     }
 }
 
-//TODO.- IMPLEMENTAR TABLA DE SCORES
 function saveScore() {
     Swal.fire({
+        allowOutsideClick: false,
+        allowEscapeKey: false,
         title: 'Submit your amazing name',
         input: 'text',
         confirmButtonText: 'Save',
@@ -276,6 +270,8 @@ function playAgain() {
         confirmButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
         denyButtonText: `Cancel`,
         cancelButtonText: '<a class="noLink topScore">Top scores</a>',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
     })
 }
 
@@ -325,6 +321,8 @@ function showScores() {
     </table>
   `,
         confirmButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
     })
 }
 
@@ -357,3 +355,5 @@ function setScore(user) {
         }
     }
 }
+
+

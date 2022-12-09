@@ -33,7 +33,7 @@ body {
     text-align: center;
     font-family: 'Sono', sans-serif;
     color: white;
-    font-size: 1em;
+    font-size: 1.2em;
 }
 
 .container {
@@ -134,7 +134,7 @@ body {
 }
 
 .button {
-    min-width: 300px;
+    min-width: 220px;
     min-height: 60px;
     font-family: 'Sono', sans-serif;
     font-size: 22px;
@@ -156,7 +156,7 @@ body {
 .button::before {
     content: '';
     border-radius: 1000px;
-    min-width: calc(300px + 12px);
+    min-width: calc(220px + 12px);
     min-height: calc(60px + 12px);
     border: 6px solid #00FFCB;
     box-shadow: 0 0 60px rgba(0, 255, 203, .64);
@@ -185,31 +185,20 @@ body {
     display: none;
 }
 
-
-/* @keyframes ring {
-    0% {
-        width: 30px;
-        height: 30px;
-        opacity: 1;
+@media (min-width: 800px) {
+    .title {
+        font-size: 4em;
     }
 
-    100% {
-        width: 300px;
-        height: 300px;
-        opacity: 0;
+    .text {
+        font-size: 1.5em;
+    }
+
+    .autor {
+        font-size: 1.2em;
+    }
+
+    .button {
+        ma
     }
 }
-
-.button::after {
-    content: '';
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    border: 6px solid #00FFCB;
-    position: absolute;
-    z-index: -1;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: ring 1.5s infinite;
-} */
