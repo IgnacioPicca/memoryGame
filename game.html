@@ -8,55 +8,58 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sono:wght@500&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./img/icon.ico" type="image/png" />
+    <link rel="shortcut icon" href="./img/pik.png" type="image/png" />
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/game.css">
+    <title>PokeMemo</title>
 
-    <title>Memory Game</title>
 </head>
 
 <body>
 
-    <a href="https://mentalchallenge.netlify.app/" class="noLink">
-        <h1 class="title">Memory Game</h1>
-    </a>
+    <div class="index-container">
 
-    <div id="board-game">
+        <a href="https://mentalchallenge.netlify.app/" class="noLink">
+            <h1 class="title">Memory Game</h1>
+        </a>
 
-        <div class="cards-container">
-            <div class="card" id="0"></div>
-            <div class="card" id="1"></div>
-            <div class="card" id="2"></div>
-            <div class="card" id="3"></div>
-            <div class="card" id="4"></div>
-            <div class="card" id="5"></div>
-            <div class="card" id="6"></div>
-            <div class="card" id="7"></div>
-            <div class="card" id="8"></div>
-            <div class="card" id="9"></div>
-            <div class="card" id="10"></div>
-            <div class="card" id="11"></div>
-            <div class="card" id="12"></div>
-            <div class="card" id="13"></div>
-            <div class="card" id="14"></div>
-            <div class="card" id="15"></div>
+        <div id="board-game">
+
+            <div class="cards-container">
+                <div class="card" id="0"></div>
+                <div class="card" id="1"></div>
+                <div class="card" id="2"></div>
+                <div class="card" id="3"></div>
+                <div class="card" id="4"></div>
+                <div class="card" id="5"></div>
+                <div class="card" id="6"></div>
+                <div class="card" id="7"></div>
+                <div class="card" id="8"></div>
+                <div class="card" id="9"></div>
+                <div class="card" id="10"></div>
+                <div class="card" id="11"></div>
+                <div class="card" id="12"></div>
+                <div class="card" id="13"></div>
+                <div class="card" id="14"></div>
+                <div class="card" id="15"></div>
+            </div>
+
+            <div class="setup">
+                <span>Time:<span id="time"></span></span>
+
+                <span>Moves:<span id="moves">0</span></span>
+            </div>
+
+            <div id="endGame"></div>
+
         </div>
 
-        <div class="setup">
-            <span>Time:<span id="time"></span></span>
-
-            <span>Moves:<span id="moves">0</span></span>
-        </div>
-
-        <div id="endGame"></div>
+        <footer>
+            <i class="autor">Desarrollado con 🤍 por <a href="https://github.com/IgnacioPicca" class="github"
+                    target="_blank">iPicca</a></i>
+        </footer>
 
     </div>
-
-    <footer>
-        <i class="autor">Desarrollado con 🤍 por <a href="https://github.com/IgnacioPicca" class="github"
-                target="_blank">iPicca</a></i>
-    </footer>
-
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script src="./js/app.js"></script>
 </body>

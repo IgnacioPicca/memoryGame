@@ -186,7 +186,7 @@ function checkMatch(card1Value, card2Value) {
             card2.innerHTML = "";
             //Volvemos a habilitar la tarjeta
             card1.classList.remove('unavailable')
-        }, 650)
+        }, 420)
 }
 
 function youLose() {

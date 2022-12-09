@@ -1,8 +1,20 @@
 body {
-    background: rgb(34, 193, 195);
-    background: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    background-image: url(../img/index-bg.jpg);
+    background-size: cover;
     height: 100vh;
     overflow-y: hidden;
+}
+
+.index-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 90%;
+    max-width: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgb(255, 255, 255);
 }
 
 .noLink {
@@ -12,17 +24,16 @@ body {
 
 .title {
     text-align: center;
-    margin-top: 80px;
     font-family: 'Sono', sans-serif;
     color: white;
-    font-size: 3em;
+    font-size: 2.5em;
 }
 
 .text {
     text-align: center;
     font-family: 'Sono', sans-serif;
     color: white;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 .container {
@@ -98,7 +109,7 @@ body {
 }
 
 .autor {
-    font-size: 1.2em;
+    font-size: 1em;
     margin: 0 auto;
     font-weight: bold;
     font-family: 'Sono', sans-serif;
