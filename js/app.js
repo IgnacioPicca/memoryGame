@@ -6,8 +6,10 @@ let flippedCards = 0;
 let attempts = 0;
 let card1;
 let card1Value;
+let card1Id;
 let card2;
 let card2Value;
+let card2Id;
 let countTime = null;
 let points = 100;
 let topFive = [
@@ -24,8 +26,8 @@ let matchAudio = new Audio("./sounds/match.wav")
 let noMatch = new Audio("./sounds/noMatch.wav")
 let loseAudio = new Audio("./sounds/lose.wav")
 let win = new Audio("./sounds/win.wav")
-let music = new Audio("./sounds/music.wav")
-music.volume = 0.1;
+let music = new Audio("./sounds/music.mp3")
+music.volume = 0.4;
 
 let moves = document.getElementById("moves");
 let start = document.getElementById("btn");
@@ -51,7 +53,7 @@ musicOn.addEventListener('click', (e) => {
 
 document.addEventListener('click', (e) => {
     let elementId = e.target.id;
-    if (e.target.className.includes('card') && elementId != '') {
+    if (e.target.className.includes('face') && elementId != '') {
         flip(elementId);
     }
 }
@@ -120,10 +122,14 @@ function flip(id) {
         firstCardAudio.play();
         //Capturamos la carta que se elige 
         card1 = document.getElementById(id)
+        card1.classList.add('toggleCard')
         //Le asignamos un valor del arreglo
         card1Value = imgSrc[id]
         //Mostramos el valor asignado
-        card1.innerHTML = `<img src="${imgSrc[id]}" alt="">`
+        setTimeout(() => {
+            card1.innerHTML = `<img src="${imgSrc[id]}" alt="">`
+        }, 250)
+        card1Id = id;
         //Le agregamos la clase unavailable
         card1.classList.add('unavailable')
     }
@@ -132,16 +138,20 @@ function flip(id) {
     else if (flippedCards === 2) {
         //Capturamos la carta que se elige 
         card2 = document.getElementById(id)
+        card2.classList.add('toggleCard')
         //Le asignamos un valor del arreglo
         card2Value = imgSrc[id]
         //Mostramos el valor asignado
-        card2.innerHTML = `<img src="${imgSrc[id]}" alt="">`
+        setTimeout(() => {
+            card2.innerHTML = `<img src="${imgSrc[id]}" alt="">`
+        }, 250)
+        card2Id = id;
         //Sumamos un intento
         attempts++;
         //Actualizamos los movimientos
         moves.innerHTML = attempts
         //Chequeamos una coincidencia
-        checkMatch(card1Value, card2Value);
+        checkMatch(card1Value, card1Id, card2Value, card2Id);
     }
 
     //Si se hacen 8 puntos, se gana
@@ -150,7 +160,7 @@ function flip(id) {
     }
 }
 
-function checkMatch(card1Value, card2Value) {
+function checkMatch(card1Value, card1Id, card2Value, card2Id) {
     //Si el valor de las dos cartas elegidas coincide
     card1Value == card2Value ? (
         matchAudio.play(),
@@ -166,11 +176,13 @@ function checkMatch(card1Value, card2Value) {
                 //Reestablecemos flippedCards
                 flippedCards = 0;
             //Ocultamos el contenido de las tarjetas
-            card1.innerHTML = "";
-            card2.innerHTML = "";
+            card1.classList.remove('toggleCard')
+            card2.classList.remove('toggleCard')
+            card1.innerHTML = `<img src="./img/pokeCard.png" alt="" class="face" id="${card1Id}">`
+            card2.innerHTML = `<img src="./img/pokeCard.png" alt="" class="face" id="${card2Id}">`
             //Volvemos a habilitar la tarjeta
             card1.classList.remove('unavailable')
-        }, 550)
+        }, 850)
 }
 
 function youLose() {
@@ -350,5 +362,4 @@ function setScore(user) {
         }
     }
 }
-
 
