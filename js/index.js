@@ -4,7 +4,7 @@ let time = 0;
 document.addEventListener('click', (evt) => {
     let lvl = evt.target.id;
     if (evt.target.className.includes('level') && lvl != '') {
-        lvl === "extreme" ? time = 31 : time = 46
+        lvl === "extreme" ? time = 36 : time = 46
     }
     const tiempoString = JSON.stringify(time);
     sessionStorage.setItem("tiempo", tiempoString)

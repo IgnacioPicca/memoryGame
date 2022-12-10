@@ -29,15 +29,12 @@ body {
     font-family: 'Sono', sans-serif;
     color: white;
     font-size: 3em;
-
 }
 
 .noLink {
     text-decoration: none;
     color: white;
 }
-
-/* GAME */
 
 #board-game {
     position: absolute;
@@ -92,7 +89,6 @@ img {
     min-height: 80%;
 }
 
-
 .card-back {
     transform: rotateY(180deg);
 }
@@ -104,7 +100,6 @@ img {
 .card:hover {
     background-color: rgba(255, 255, 255, 0.2)
 }
-
 
 .setup {
     width: 90%;
@@ -224,8 +219,6 @@ td {
 #music-on {
     cursor: pointer;
 }
-
-
 
 @media (min-height: 800px) {
     .title {
