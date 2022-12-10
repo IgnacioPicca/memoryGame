@@ -36,17 +36,13 @@ let musicOn = document.querySelector("#music-on")
 let musicOff = document.querySelector("#music-off")
 
 
-//Manejo de eventos
-
 musicOff.addEventListener('click', (e) => {
-    console.log("music off")
     music.play();
     e.target.style.display = "none"
     musicOn.style.display = "block"
 })
 
 musicOn.addEventListener('click', (e) => {
-    console.log("music on")
     music.pause();
     e.target.style.display = "none"
     musicOff.style.display = "block"
@@ -68,7 +64,7 @@ document.addEventListener('click', (e) => {
 }
 );
 
-//Pokemons del tablero
+
 let pokes = [
     create(1), create(1), create(4), create(4),
     create(7), create(7), create(25), create(25),
@@ -93,7 +89,6 @@ async function getPoke(id) {
     }
 }
 
-//Cuando se inicia el juego, comienza a correr el tiempo
 const startGame = () => {
     music.play();
     countTime = setInterval(() => {
