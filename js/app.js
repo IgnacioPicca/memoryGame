@@ -301,11 +301,16 @@ function getPoints() {
 }
 
 function setScore(user) {
-    for (let i = 0; i < localStorage.length; i++) {
-        let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        if (user.score > usuarios.score) {
-            localStorage.setItem(user.name, JSON.stringify(user));
-            break;
+    if (localStorage.length < 5) {
+        localStorage.setItem(user.name, JSON.stringify(user))
+    }
+    else {
+        for (let i = 0; i < localStorage.length; i++) {
+            let usuarios = JSON.parse(localStorage.getItem(localStorage.key(i)))
+            if (user.score > usuarios.score) {
+                localStorage.setItem(user.name, JSON.stringify(user))
+                break;
+            }
         }
     }
 }
