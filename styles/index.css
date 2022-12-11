@@ -17,23 +17,23 @@ body {
     box-shadow: 0 0 50px rgb(255, 255, 255);
 }
 
-.noLink {
-    text-decoration: none;
-    color: white;
-}
-
 .title {
     text-align: center;
     font-family: 'Sono', sans-serif;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 2.5em;
 }
 
 .text {
     text-align: center;
     font-family: 'Sono', sans-serif;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 1.2em;
+}
+
+.noLink {
+    text-decoration: none;
+    color: rgb(255, 255, 255)
 }
 
 .container {
@@ -64,13 +64,13 @@ body {
 
 .level:hover,
 .level:focus {
-    color: #fff;
+    color: rgb(255, 255, 255);
     outline: 0;
 }
 
 #extreme {
     border: 2px solid #e74c3c;
-    border-radius: 0.6em;
+    border-radius: 1em;
     color: #fffefe;
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
@@ -85,7 +85,7 @@ body {
 
 #newbie {
     border: 2px solid #55ff00;
-    border-radius: 0.6em;
+    border-radius: 1em;
     color: #fffefe;
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
@@ -113,7 +113,6 @@ body {
     margin: 0 auto;
     font-weight: bold;
     font-family: 'Sono', sans-serif;
-
 }
 
 .github {
@@ -123,8 +122,6 @@ body {
     background-clip: text;
     color: transparent;
 }
-
-/* Boton */
 
 .wrap {
     height: 30%;

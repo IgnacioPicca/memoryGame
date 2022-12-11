@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 
-.index-container {
+.game-container {
     background-color: rgba(0, 0, 0, 0.7);
     height: 95%;
     width: 100%;
@@ -93,12 +93,8 @@ img {
     transform: rotateY(180deg);
 }
 
-.toggleCard {
+.flippedCard {
     transform: translateX(-100%) rotateY(-180deg);
-}
-
-.card:hover {
-    background-color: rgba(255, 255, 255, 0.2)
 }
 
 .setup {
@@ -119,45 +115,15 @@ img {
     color: #ffffff;
 }
 
-.btn {
-    background-color: transparent;
-    color: white;
-    border-color: aliceblue;
-    border-radius: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    width: 100px;
-    height: 30px;
-    font-family: 'Sono', sans-serif;
-}
-
 .unavailable {
     pointer-events: none;
-}
-
-.win {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    width: 100%;
-    max-width: 800px;
-    height: 100%;
-    margin: 0 auto;
-    text-align: center;
-    background: #020202;
-    padding: 100px 20px;
-}
-
-.win-text {
-    font-size: 30px;
-    color: rgba(34, 193, 195, 1);
 }
 
 .red {
     color: red;
 }
 
-footer {
+.subtitle {
     align-items: center;
     padding-top: 10px;
     color: white;
@@ -202,7 +168,7 @@ td {
 
 .point,
 .user {
-    background-color: rgb(241, 188, 188)
+    background-color: rgb(249, 127, 127)
 }
 
 .swal2-popup {

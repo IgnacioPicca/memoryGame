@@ -39,29 +39,27 @@ musicOff.addEventListener('click', (e) => {
     music.play();
     e.target.style.display = "none";
     musicOn.style.display = "block";
-})
+});
 
 musicOn.addEventListener('click', (e) => {
     music.pause();
     e.target.style.display = "none";
     musicOff.style.display = "block";
 
-})
+});
 
 document.addEventListener('click', (e) => {
     let elementId = e.target.id;
     if (e.target.className.includes('face') && elementId != '') {
         flip(elementId);
     }
-}
-);
+});
 
 document.addEventListener('click', (e) => {
     if (e.target.className.includes('topScore')) {
         showScores();
     }
-}
-);
+});
 
 let pokes = [
     create(1), create(1), create(4), create(4),
@@ -79,11 +77,15 @@ async function create(id) {
 
 async function getPoke(id) {
     try {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-        const data = await res.json();
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const data = await response.json();
         return data
-    } catch (e) {
-        console.log("Error");
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+        })
     }
 }
 
@@ -112,7 +114,7 @@ function flip(id) {
     if (flippedCards === 1) {
         firstCardAudio.play();
         card1 = document.getElementById(id);
-        card1.classList.add('toggleCard');
+        card1.classList.add('flippedCard');
         card1Value = imgSrc[id];
         setTimeout(() => {
             card1.innerHTML = `<img src="${imgSrc[id]}" alt="">`
@@ -123,7 +125,7 @@ function flip(id) {
 
     else if (flippedCards === 2) {
         card2 = document.getElementById(id);
-        card2.classList.add('toggleCard');
+        card2.classList.add('flippedCard');
         card2Value = imgSrc[id];
         setTimeout(() => {
             card2.innerHTML = `<img src="${imgSrc[id]}" alt="">`
@@ -148,8 +150,8 @@ function checkMatch(card1Value, card1Id, card2Value, card2Id) {
         setTimeout(() => {
             noMatch.play(),
                 flippedCards = 0;
-            card1.classList.remove('toggleCard');
-            card2.classList.remove('toggleCard');
+            card1.classList.remove('flippedCard');
+            card2.classList.remove('flippedCard');
             card1.innerHTML = `<img src="./img/pokeCard.png" alt="" class="face" id="${card1Id}">`;
             card2.innerHTML = `<img src="./img/pokeCard.png" alt="" class="face" id="${card2Id}">`;
             card1.classList.remove('unavailable');
@@ -312,4 +314,3 @@ function setScore(user) {
         }
     }
 }
-
