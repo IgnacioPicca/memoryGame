@@ -11,7 +11,3 @@ Se utilizan conceptos como manejo de eventos, modificaciones del dom, promesas, 
 Pagina web full responsive, desarrollada bajo los principios mobile first. 
 
 La web se encuentra hosteada en Netlify. LINK: https://mentalchallenge.netlify.app/
-
-Actualmente en construcción. 
-
-
