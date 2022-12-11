@@ -187,10 +187,8 @@ function youWin() {
         padding: '2em',
         color: 'rgba(34, 193, 195, 1)',
         showDenyButton: true,
-        showCancelButton: true,
         confirmButtonText: 'Save',
         denyButtonText: '<a class="noLink" href="https://mentalchallenge.netlify.app/">Play again</a>',
-        cancelButtonText: '<a class="noLink topScore">Top scores</a>',
         allowEscapeKey: false,
         allowOutsideClick: false,
     }).then((result) => {
